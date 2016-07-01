@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "897469297524",
+    "firebase_url": "https://thesis-cb2dc.firebaseio.com",
+    "project_id": "thesis-cb2dc",
+    "storage_bucket": "thesis-cb2dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897469297524:android:bd559190e7c3a3ff",
+        "android_client_info": {
+          "package_name": "com.example.dorothylu.thesisprototype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897469297524-okaf0d587vndhofl8gk3jh2140quufek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_83qLHHnhGAcbkLInLp4swXMP_cn4UmI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
