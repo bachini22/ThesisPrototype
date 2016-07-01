@@ -1,5 +1,6 @@
 package com.example.dorothylu.thesisprototype;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,16 +48,15 @@ public class Login extends AppCompatActivity {
         public void onAuthenticated(AuthData authData) {
             // Authenticated successfully with payload authData
             //go to newsfeed
-            TextView message = (TextView)findViewById(R.id.message);
-            message.setText("Success Farting");
+
 
         }
         @Override
         public void onAuthenticationError(FirebaseError firebaseError) {
             // Authenticated failed with error firebaseError
-            //invalid details
-            TextView message = (TextView)findViewById(R.id.message);
-            message.setText("Wrong details");
+            TextInputLayout email = (TextInputLayout) findViewById(R.id.emailWrapper);
+            email.setErrorEnabled(true);
+            email.setError("Invalid Username and/or Password");
         }
     };
 
