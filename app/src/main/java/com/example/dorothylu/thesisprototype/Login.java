@@ -82,10 +82,9 @@ public class Login extends AppCompatActivity {
                         }
 
                         else{
-                            // sira pa newsfeed
-                            //Intent intent = new Intent(Login.this, NewsFeed.class);
-                            //startActivity(intent);
-                            //finish();
+                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
 
 
