@@ -2,25 +2,29 @@ package com.example.dorothylu.thesisprototype;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
+import com.example.dorothylu.thesisprototype.dummy.DummyContent;
+import com.example.dorothylu.thesisprototype.dummy.Temp;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import data.FeedItem;
+
+public class MainActivity extends AppCompatActivity implements Feed.OnListFragmentInteractionListener {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    /*
     private int[] tabIcons = {
             R.mipmap.newsfeed,
             R.mipmap.camera,
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             R.mipmap.settings
 
     };
-
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FeedTemp(), "Feed");
-        adapter.addFragment(new FeedTemp(), "Camera");
-        adapter.addFragment(new FeedTemp(), "Map");
-        adapter.addFragment(new FeedTemp(), "Notif");
-        adapter.addFragment(new FeedTemp(), "Settings");
+        adapter.addFragment(new Feed(), "Feed");
+        adapter.addFragment(new Feed(), "Camera");
+        adapter.addFragment(new Feed(), "Map");
+        adapter.addFragment(new Feed(), "Notif");
+        adapter.addFragment(new Feed(), "Settings");
         viewPager.setAdapter(adapter);
     }
     private void setupTabIcons() {
@@ -79,7 +83,15 @@ public class MainActivity extends AppCompatActivity {
         tabFive.setText("Five");
         tabFive.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.settings, 0, 0);
         tabLayout.getTabAt(4).setCustomView(tabFive);
+
+
     }
+
+    @Override
+    public void onListFragmentInteraction(FeedItem item) {
+
+    }
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -103,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
+
 
         @Override
         public CharSequence getPageTitle(int position) {

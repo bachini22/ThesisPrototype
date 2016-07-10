@@ -1,65 +1,53 @@
 package data;
 
+import android.net.Uri;
+
+import java.io.File;
+
 /**
  * Created by dorothylu on 7/3/16.
  */
 public class FeedItem {
-    private int id;
-    private String name, status, image, profilePic, timeStamp, url;
-
+    private String id;
+    private String fName,lName, status, timeStamp, category;
+    private Uri image;
     public FeedItem() {
     }
 
-    public FeedItem(int id, String name, String image, String status,
-                    String profilePic, String timeStamp, String url) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.status = status;
-        this.profilePic = profilePic;
-        this.timeStamp = timeStamp;
-        this.url = url;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLName() {
+        return lName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLName(String name) {
+        this.lName = name;
     }
 
-    public String getImge() {
+    public String getFName(){ return fName; }
+
+    public void setFName(String fName){ this.fName = fName;}
+
+    public Uri getImge() {
         return image;
     }
 
-    public void setImge(String image) {
+    public void setImge(Uri image) {
         this.image = image;
     }
 
-    public String getStatus() {
+    public String getMessage() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setMessage(String status) {
         this.status = status;
-    }
-
-    public String getProfilePic() {
-        return profilePic;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
     }
 
     public String getTimeStamp() {
@@ -70,11 +58,11 @@ public class FeedItem {
         this.timeStamp = timeStamp;
     }
 
-    public String getUrl() {
-        return url;
+    public String getCategory() {
+        return category;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCategory(String c) {
+        this.category = c;
     }
 }
