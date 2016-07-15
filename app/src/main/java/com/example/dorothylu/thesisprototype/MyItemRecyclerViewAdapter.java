@@ -44,6 +44,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     private DatabaseReference mDatabase;
     private static final String TAG = "Feed";
     private Context context;
+    private int postNumber = 0;
 
     LinearLayoutManager layout;
 
@@ -81,6 +82,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         if(mValues.get(position).getImge() != null)
             Picasso.with(context)
                     .load(mValues.get(position).getImge())
+                    .fit()
+                    .centerInside()
                     .placeholder( R.drawable.progress_animation)
                     .into(holder.mImage);
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -129,13 +132,15 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         }
     }
 
-    public void loadPicture(final String userId, String postId, final FeedItem item) throws IOException {
+    public void loadPicture(final String userId, String postId, final FeedItem item, final int position) throws IOException {
         storageRef.child(userId).child(postId).child("1.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 // TODO: handle uri
                 Uri url = uri;
                 item.setImge(url);
+                getFullName(userId, item);
+                notifyItemChanged(position);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -144,7 +149,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             }
         });
 
-        getFullName(userId, item);
+
 
     }
 
@@ -190,7 +195,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                 System.out.println("flag is " + newPost2.get("hasImg").toString());
                 if(Integer.parseInt(newPost2.get("hasImg").toString()) == 1) {
                     System.out.println("loading image");
-                    loadPicture(newPost2.get("userID").toString(), temp.getId(), temp);
+                    loadPicture(newPost2.get("userID").toString(), temp.getId(), temp, postNumber);
 
                 }
                 else getFullName(newPost2.get("userID").toString(), temp);
@@ -198,6 +203,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                 e.printStackTrace();
             }
             // A new comment has been added, add it to the displayed list
+            postNumber++;
             System.out.println("here");
             System.out.println(newPost2.get("text").toString());
 
