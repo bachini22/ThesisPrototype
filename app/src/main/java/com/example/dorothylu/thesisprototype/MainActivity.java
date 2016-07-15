@@ -1,15 +1,17 @@
 package com.example.dorothylu.thesisprototype;
 
-import android.support.v7.app.AppCompatActivity;
+
+
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.dorothylu.thesisprototype.dummy.DummyContent;
 import com.example.dorothylu.thesisprototype.dummy.Temp;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements Feed.OnListFragme
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         adapter.addFragment(new Feed(), "Feed");
         adapter.addFragment(new Feed(), "Camera");
         adapter.addFragment(new Feed(), "Map");
@@ -100,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements Feed.OnListFragme
         public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
+
+
 
         @Override
         public Fragment getItem(int position) {

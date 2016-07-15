@@ -1,15 +1,17 @@
 package com.example.dorothylu.thesisprototype;
 
+
+
+
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import java.util.ArrayList;
 import data.FeedItem;
@@ -79,7 +81,7 @@ public class Feed extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adap = new MyItemRecyclerViewAdapter(items, mListener, getContext(), layout);
+            adap = new MyItemRecyclerViewAdapter(items, mListener, getActivity(), layout);
             recyclerView.setAdapter(adap);
             adap.instanciateFirebase();
         }
