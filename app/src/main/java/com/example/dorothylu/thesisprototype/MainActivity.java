@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements Feed.OnListFragme
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         adapter.addFragment(new Feed(), "Feed");
-        adapter.addFragment(new Feed(), "Camera");
+        adapter.addFragment(new Camera2BasicFragment(), "Camera");
         adapter.addFragment(new Feed(), "Map");
         adapter.addFragment(new Feed(), "Notif");
         adapter.addFragment(new Feed(), "Settings");
